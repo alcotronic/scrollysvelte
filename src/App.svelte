@@ -15,7 +15,7 @@
     
     <Router {url}>
       <div class="header">
-        <UiActionBar><h1 slot="center"><Link tabindex="0" to="/">{pageTitle}</Link></h1></UiActionBar>
+        <UiActionBar><h1 slot="center"><Link tabindex={0} to="/">{pageTitle}</Link></h1></UiActionBar>
       </div>
       <div>
         <Route path="/article" component={About} />
