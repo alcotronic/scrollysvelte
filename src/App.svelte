@@ -1,0 +1,43 @@
+<script lang="ts">
+  import svelteLogo from './assets/svelte.svg'
+  import viteLogo from '/vite.svg'
+  import Counter from './lib/Counter.svelte'
+  import Title, { type TitleType } from './ui/Title.svelte';
+  import Kicker from './ui/Kicker.svelte';
+  import Teaser from './ui/Teaser.svelte';
+
+  const kicker = 'Test kicker';
+  const title = 'Test title';
+  const teaser = 'Test teaser';
+
+  const titleType: TitleType = 'Article';
+</script>
+
+<main>
+  <div>
+    <Kicker kicker="{ kicker }" />
+    <Title title="{ title }" titleType="{ titleType }" />
+    <Teaser teaser="{ teaser }"/>
+  </div>
+  <div class="card">
+    <Counter />
+  </div>
+</main>
+
+<style>
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.svelte:hover {
+    filter: drop-shadow(0 0 2em #ff3e00aa);
+  }
+  .read-the-docs {
+    color: #888;
+  }
+</style>
