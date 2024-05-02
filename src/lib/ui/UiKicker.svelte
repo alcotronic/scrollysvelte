@@ -1,8 +1,9 @@
 <script lang="ts">
-  export let kicker: string = '';
+  export let kicker: string = "";
 </script>
 
-<p>{ kicker }</p>
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<p>{kicker}</p>
 
 <style>
   p {

@@ -1,15 +1,13 @@
-<script context="module" lang="ts">
-  export type TitleType = "Article" | "Section" | "Overview";
-</script>
-
 <script lang="ts">
+  import type { TitleStyle } from "../common/TitleStyle.type";
+
   export let title: string = "";
-  export let titleType: TitleType = "Article";
+  export let titleStyle: TitleStyle = "Article";
 </script>
 
-{#if titleType === "Article"}
+{#if titleStyle === "Article"}
   <h1 class="title">{title}</h1>
-{:else if titleType === "Section"}
+{:else if titleStyle === "Section"}
   <h2 class="title">{title}</h2>
 {:else}
   <h3 class="title">{title}</h3>

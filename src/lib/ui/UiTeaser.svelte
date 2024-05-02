@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let teaser: string = "";
+  export let teaser: string = '';
 </script>
 
 <p>{teaser}</p>

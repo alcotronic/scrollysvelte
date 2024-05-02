@@ -1,41 +1,67 @@
 <script lang="ts">
-  import Counter from './lib/Counter.svelte'
-  import Title, { type TitleType } from './ui/Title.svelte';
-  import Kicker from './ui/Kicker.svelte';
-  import Teaser from './ui/Teaser.svelte';
+  import type { TitleStyle } from "./lib/common/TitleStyle.type";
+  import UiTitle from "./lib/ui/UiTitle.svelte";
+  import UiKicker from "./lib/ui/UiKicker.svelte";
+  import UiTeaser from "./lib/ui/UiTeaser.svelte";
+  import UiCard from "./lib/ui/UiCard.svelte";
+  import { articles } from "./lib/Testdata";
+  import UiActionBar from "./lib/ui/UiActionBar.svelte";
 
-  const kicker = 'Test kicker';
-  const title = 'Test title';
-  const teaser = 'Test teaser';
+  import { Router, Link, Route } from "svelte-routing";
+  import Articles from "./routes/Articles.svelte";
+  import About from "./routes/About.svelte";
 
-  const titleType: TitleType = 'Article';
+  const pageTitle = "Scrollysvelte"
+
+  const kicker = "Test kicker";
+  const title = "Test title";
+  const teaser = "Test teaser";
+
+  const titleStyle: TitleStyle = "Article";
+
+  const article = articles[0];
+
+  export let url = "";
 </script>
 
-<main>
-  <div>
-    <Kicker kicker="{ kicker }" />
-    <Title title="{ title }" titleType="{ titleType }" />
-    <Teaser teaser="{ teaser }"/>
+
+  <main>
+    
+    <Router {url}>
+      <div class="header">
+        <UiActionBar><h1 slot="center"><Link tabindex="0" to="/">{pageTitle}</Link></h1></UiActionBar>
+      </div>
+      <div>
+        <Route path="/article" component={About} />
+        <Route path="/" component={Articles} />
+      </div>
+    </Router>
+    
+  </main>
+
+
+<!-- <main>
+  <div class="header">
+    <UiActionBar><h1 slot="center">{pageTitle}</h1></UiActionBar>
   </div>
-  <div class="card">
-    <Counter />
+  <div class="content">
+    <UiCard>
+      <UiKicker {kicker}/>
+      <UiTitle {title} {titleStyle}/>
+      <UiTeaser {teaser}/>
+    </UiCard>
+    <FeatureArticle article={article}/>
   </div>
-</main>
+  <div class="footer"></div>  
+</main> -->
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  .header {
+    width: 100vw;
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
+  .content {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 2rem;
   }
 </style>
