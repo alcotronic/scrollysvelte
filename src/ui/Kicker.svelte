@@ -7,6 +7,7 @@
 <style>
   p {
     align-self: center;
+    color: rgb(179, 89, 194);
     padding-top: 0.5em;
   }
 </style>
