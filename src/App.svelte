@@ -1,10 +1,4 @@
 <script lang="ts">
-  import type { TitleStyle } from "./lib/common/TitleStyle.type";
-  import UiTitle from "./lib/ui/UiTitle.svelte";
-  import UiKicker from "./lib/ui/UiKicker.svelte";
-  import UiTeaser from "./lib/ui/UiTeaser.svelte";
-  import UiCard from "./lib/ui/UiCard.svelte";
-  import { articles } from "./lib/Testdata";
   import UiActionBar from "./lib/ui/UiActionBar.svelte";
 
   import { Router, Link, Route } from "svelte-routing";
@@ -12,14 +6,6 @@
   import About from "./routes/About.svelte";
 
   const pageTitle = "Scrollysvelte"
-
-  const kicker = "Test kicker";
-  const title = "Test title";
-  const teaser = "Test teaser";
-
-  const titleStyle: TitleStyle = "Article";
-
-  const article = articles[0];
 
   export let url = "";
 </script>
