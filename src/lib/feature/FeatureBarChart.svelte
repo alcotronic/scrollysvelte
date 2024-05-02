@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
   import { Bar } from "svelte-chartjs";
   import {
     Chart,
@@ -28,7 +27,7 @@
 <div class="bar-chart-section">
   <UiCard>
     <div class="bar-chart">
-      <Bar data={barChartData} options={{responsive: true}} />
+      <Bar data={barChartData} options={{ responsive: true }} />
     </div>
   </UiCard>
 </div>

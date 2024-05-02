@@ -6,6 +6,7 @@
   import UiKicker from "../ui/UiKicker.svelte";
   import UiTeaser from "../ui/UiTeaser.svelte";
   import UiTitle from "../ui/UiTitle.svelte";
+  import UiFadeIn from "../ui/UiFadeIn.svelte";
 
   export let articles: Array<Article> | undefined = [];
 
@@ -21,18 +22,20 @@
 <div class="article-grid">
   {#if articles}
     {#each articles as article, index}
-      <div
-        role="link"
-        tabindex={index + 1}
-        on:click={(event) => onSelectArticle(article, event)}
-        on:keypress={(event) => onSelectArticle(article, event)}
-      >
-        <UiCard>
-          <UiKicker kicker={article.kicker} />
-          <UiTitle title={article.title} titleStyle="Overview" />
-          <UiTeaser teaser={article.teaser} />
-        </UiCard>
-      </div>
+      <UiFadeIn>
+        <div
+          role="link"
+          tabindex={index + 1}
+          on:click={(event) => onSelectArticle(article, event)}
+          on:keypress={(event) => onSelectArticle(article, event)}
+        >
+          <UiCard>
+            <UiKicker kicker={article.kicker} />
+            <UiTitle title={article.title} titleStyle="Overview" />
+            <UiTeaser teaser={article.teaser} />
+          </UiCard>
+        </div>
+      </UiFadeIn>
     {/each}
   {/if}
 </div>

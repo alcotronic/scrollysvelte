@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-  import { onDestroy, onMount } from 'svelte';
+  import { fade } from "svelte/transition";
+  import { onDestroy, onMount } from "svelte";
 
   let element: any;
   let observer: IntersectionObserver;
@@ -8,7 +8,7 @@
 
   onMount(() => {
     observer = new IntersectionObserver((entries) => {
-      if(entries[0] && entries[0].isIntersecting) {
+      if (entries[0] && entries[0].isIntersecting) {
         isInView = true;
         observer.disconnect();
       }
@@ -19,7 +19,7 @@
 
   onDestroy(() => {
     observer.disconnect();
-  })
+  });
 </script>
 
 <div bind:this={element}>
