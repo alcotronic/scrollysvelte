@@ -42,6 +42,7 @@ export type ArticleSectionCharts = {
 };
 
 
-export type ArticleSectionCsvTable = {
+export type ArticleSectionCsvData = {
   csvUrl: string;
+  style: 'Table' | 'BarChart' | 'StackedBarChart';
 }

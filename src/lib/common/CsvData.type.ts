@@ -1,4 +1,4 @@
-export type CsvTable = {
+export type CsvData = {
   columns: Array<any>;
   dataRows: Array<Array<any>>;
 }

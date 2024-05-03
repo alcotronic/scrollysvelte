@@ -1,9 +1,10 @@
 <script lang="ts">
-  import UiActionBar from "./lib/ui/UiActionBar.svelte";
+  
 
   import { Router, Link, Route } from "svelte-routing";
-  import Articles from "./routes/Articles.svelte";
-  import About from "./routes/About.svelte";
+  import UiActionBar from "./lib/ui/UiActionBar.svelte";
+  import ArticleRoute from "./routes/Article.route.svelte";
+  import ArticlesRoute from "./routes/Articles.route.svelte";
 
   const pageTitle = "Scrollysvelte";
 
@@ -20,8 +21,8 @@
       >
     </div>
     <div>
-      <Route path="/article" component={About} />
-      <Route path="/" component={Articles} />
+      <Route path="/article" component={ArticleRoute} />
+      <Route path="/" component={ArticlesRoute} />
     </div>
   </Router>
 </main>

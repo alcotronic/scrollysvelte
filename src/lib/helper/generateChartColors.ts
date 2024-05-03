@@ -1,7 +1,7 @@
 import type { MdColor } from "../common/MdColor.type";
 import { generateCharColor } from "./generateChartColor";
 
-export const useGenerateCharColors = (
+export const generateCharColors = (
   data: Array<any>,
   color?: MdColor,
   colors?: MdColor[]

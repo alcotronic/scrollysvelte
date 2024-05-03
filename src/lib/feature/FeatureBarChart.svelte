@@ -22,12 +22,25 @@
   );
 
   export let barChartData: BarChartData;
+
+  const options = {
+    responsive: true,
+    indexAxis: 'y',
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  };
 </script>
 
 <div class="bar-chart-section">
   <UiCard>
     <div class="bar-chart">
-      <Bar data={barChartData} options={{ responsive: true }} />
+      <Bar data={barChartData} options={options} />
     </div>
   </UiCard>
 </div>

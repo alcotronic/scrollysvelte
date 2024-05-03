@@ -1,8 +1,7 @@
 import { csvParse } from "d3-dsv";
-import type { CsvTable } from "../common/CsvTable.type";
+import type { CsvData } from "../common/CsvData.type";
 
-export const getCsvData = async (url: string):Promise<CsvTable> => {
-  console.log(window.location);
+export const getCsvData = async (url: string):Promise<CsvData> => {
   const response = await fetch(url, {
     method: "GET",
     headers: { "Content-Type": "application/csv; charset=UTF-8" },

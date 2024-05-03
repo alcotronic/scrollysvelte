@@ -1,6 +1,6 @@
 import type { Article } from './common/Article.type';
 import { MdColorEnum } from './common/MdColor.enum';
-import { useGenerateCharColors } from './helper/generateChartColors';
+import { generateCharColors } from './helper/generateChartColors';
 
 
 const testBarData1 = {
@@ -9,7 +9,7 @@ const testBarData1 = {
     {
       label: 'testBarDataSet1 Label',
       data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: useGenerateCharColors([30, 40, 60, 70, 5, 90]),
+      backgroundColor: generateCharColors([30, 40, 60, 70, 5, 90]),
     },
   ],
 };
@@ -20,7 +20,7 @@ const testBarData2 = {
     {
       label: 'testBarDataSet1 Label',
       data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: useGenerateCharColors([30, 40, 60, 70, 5, 90], MdColorEnum.blue),
+      backgroundColor: generateCharColors([30, 40, 60, 70, 5, 90], MdColorEnum.blue),
     },
   ],
 };
@@ -31,7 +31,7 @@ const testBarData3 = {
     {
       label: 'testBarDataSet1 Label',
       data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: useGenerateCharColors([30, 40, 60, 70, 5, 90], undefined, [MdColorEnum.pink, MdColorEnum.purple, MdColorEnum.deepPurple]),
+      backgroundColor: generateCharColors([30, 40, 60, 70, 5, 90], undefined, [MdColorEnum.pink, MdColorEnum.purple, MdColorEnum.deepPurple]),
     },
   ],
 };
@@ -41,7 +41,7 @@ const testData1 = {
   datasets: [
     {
       data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: useGenerateCharColors([30, 40, 60, 70, 5, 90]),
+      backgroundColor: generateCharColors([30, 40, 60, 70, 5, 90]),
     },
   ],
 };
@@ -51,7 +51,7 @@ const testData2 = {
   datasets: [
     {
       data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: useGenerateCharColors([30, 40, 60, 70, 5, 90], MdColorEnum.blue),
+      backgroundColor: generateCharColors([30, 40, 60, 70, 5, 90], MdColorEnum.blue),
     },
   ],
 };
@@ -61,7 +61,7 @@ const testData3 = {
   datasets: [
     {
       data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: useGenerateCharColors([30, 40, 60, 70, 5, 90], undefined, [MdColorEnum.pink, MdColorEnum.purple, MdColorEnum.deepPurple]),
+      backgroundColor: generateCharColors([30, 40, 60, 70, 5, 90], undefined, [MdColorEnum.pink, MdColorEnum.purple, MdColorEnum.deepPurple]),
     },
   ],
 };
@@ -94,6 +94,14 @@ const createArticle = (id: number): Article => {
           },
           {
             text: 'Test Sextion 1 text 3 for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section.'
+          },
+          {
+            csvUrl: window.location.origin + "/public/Testtabelle.csv",
+            style: 'Table'
+          },
+          {
+            csvUrl: window.location.origin + "/public/Testtabelle.csv",
+            style: 'BarChart'
           }
         ]
       },

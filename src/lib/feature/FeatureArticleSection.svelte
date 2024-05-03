@@ -2,12 +2,14 @@
   import type {
     ArticleSection,
     ArticleSectionChart,
-    ArticleSectionCsvTable,
+    ArticleSectionCsvData,
     ArticleSectionQuote,
     ArticleSectionText,
   } from "../common/ArticleSection.type";
   import type { BarChartData } from "../common/BarChartData.type";
   import type { DoughnutChartData } from "../common/DoughnutChartData.type";
+  import { convertCsvDataToCharBarData } from "../helper/converCsvTableToCharData";
+  import { getCsvData } from "../helper/getCsvData";
   import UiArticleQuote from "../ui/UiArticleQuote.svelte";
   import UiArticleText from "../ui/UiArticleText.svelte";
   import UiFadeIn from "../ui/UiFadeIn.svelte";
@@ -38,7 +40,9 @@
       !!content.data
     );
   };
-  const isSectionCsvTable = (content: any): content is ArticleSectionCsvTable => {
+  const isSectionCsvTable = (
+    content: any
+  ): content is ArticleSectionCsvData => {
     return content.csvUrl;
   };
   const getBarChartData = (content: ArticleSectionChart) => {
@@ -46,6 +50,11 @@
   };
   const getDoughnutChartData = (content: ArticleSectionChart) => {
     return content.data as DoughnutChartData;
+  };
+
+  const loadCsvDataAsBarChartData = async (csvUrl: string) => {
+    const csvData = await getCsvData(csvUrl);
+    return convertCsvDataToCharBarData(csvData, ["Auto", "Fahrrad"]);
   };
 </script>
 
@@ -55,33 +64,38 @@
       <UiTitle title={articleSection.title} titleStyle="Section" />
       {#if articleSection.content}
         {#each articleSection.content as content}
-          {#if isSectionText(content)}
-            <UiFadeIn>
-              <UiArticleText text={content.text} />
-            </UiFadeIn>
-          {/if}
-          {#if isSectionQuote(content)}
-            <UiFadeIn>
-              <UiArticleQuote quote={content.quote} author={content.author} />
-            </UiFadeIn>
-          {/if}
-          {#if isSectionBarChart(content)}
-            <UiFadeIn>
-              <FeatureBarChart barChartData={getBarChartData(content)} />
-            </UiFadeIn>
-          {/if}
-          {#if isSectionDoughnutChart(content)}
-            <UiFadeIn>
-              <FeatureDoughnutChart
-                doughnutChartData={getDoughnutChartData(content)}
-              />
-            </UiFadeIn>
-          {/if}
-          {#if isSectionCsvTable(content)}
-            <UiFadeIn>
-              <FeatureCsvTable url={content.csvUrl}/>
-            </UiFadeIn>
-          {/if}
+          <p>
+            {#if isSectionText(content)}
+              <UiFadeIn>
+                <UiArticleText text={content.text} />
+              </UiFadeIn>
+            {/if}
+            {#if isSectionQuote(content)}
+              <UiFadeIn>
+                <UiArticleQuote quote={content.quote} author={content.author} />
+              </UiFadeIn>
+            {/if}
+            {#if isSectionBarChart(content)}
+              <UiFadeIn>
+                <FeatureBarChart barChartData={getBarChartData(content)} />
+              </UiFadeIn>
+            {/if}
+            {#if isSectionDoughnutChart(content)}
+              <UiFadeIn>
+                <FeatureDoughnutChart
+                  doughnutChartData={getDoughnutChartData(content)}
+                />
+              </UiFadeIn>
+            {/if}
+            {#if isSectionCsvTable(content)}
+              <UiFadeIn>
+                <FeatureCsvTable url={content.csvUrl} />
+                {#await loadCsvDataAsBarChartData(content.csvUrl) then barCharData}
+                  <FeatureBarChart barChartData={barCharData} />
+                {/await}
+              </UiFadeIn>
+            {/if}
+          </p>
         {/each}
       {/if}
     {/if}
