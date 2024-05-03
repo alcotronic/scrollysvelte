@@ -10,6 +10,7 @@ export type ArticleSection = {
     | ArticleSectionImage
     | ArticleSectionChart
     | ArticleSectionCharts
+    | ArticleSectionCsvTable
   >;
 };
 
@@ -39,3 +40,8 @@ export type ArticleSectionChart = {
 export type ArticleSectionCharts = {
   charts: Array<ArticleSectionChart>;
 };
+
+
+export type ArticleSectionCsvTable = {
+  csvUrl: string;
+}

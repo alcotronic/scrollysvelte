@@ -2,6 +2,7 @@
   import type {
     ArticleSection,
     ArticleSectionChart,
+    ArticleSectionCsvTable,
     ArticleSectionQuote,
     ArticleSectionText,
   } from "../common/ArticleSection.type";
@@ -12,6 +13,7 @@
   import UiFadeIn from "../ui/UiFadeIn.svelte";
   import UiTitle from "../ui/UiTitle.svelte";
   import FeatureBarChart from "./FeatureBarChart.svelte";
+  import FeatureCsvTable from "./FeatureCsvTable.svelte";
   import FeatureDoughnutChart from "./FeatureDoughnutChart.svelte";
 
   export let articleSection: ArticleSection;
@@ -35,6 +37,9 @@
       content.chartType === "DoughnutChart" &&
       !!content.data
     );
+  };
+  const isSectionCsvTable = (content: any): content is ArticleSectionCsvTable => {
+    return content.csvUrl;
   };
   const getBarChartData = (content: ArticleSectionChart) => {
     return content.data as BarChartData;
@@ -70,6 +75,11 @@
               <FeatureDoughnutChart
                 doughnutChartData={getDoughnutChartData(content)}
               />
+            </UiFadeIn>
+          {/if}
+          {#if isSectionCsvTable(content)}
+            <UiFadeIn>
+              <FeatureCsvTable url={content.csvUrl}/>
             </UiFadeIn>
           {/if}
         {/each}

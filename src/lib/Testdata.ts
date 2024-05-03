@@ -66,6 +66,7 @@ const testData3 = {
   ],
 };
 
+
 const createArticle = (id: number): Article => {
   return {
     id: id,
@@ -93,7 +94,7 @@ const createArticle = (id: number): Article => {
           },
           {
             text: 'Test Sextion 1 text 3 for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section.'
-          },
+          }
         ]
       },
       {
@@ -118,6 +119,9 @@ const createArticle = (id: number): Article => {
           },
           {
             text: 'Test Sextion 2 text 2 for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section. Test Sextion 1 text for testing the text content of an article section.'
+          },
+          {
+            csvUrl: window.location.origin + "/public/Testtabelle2.csv"
           },
           {
             author: 'Author Name2',
