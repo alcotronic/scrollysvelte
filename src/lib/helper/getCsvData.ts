@@ -10,7 +10,7 @@ export const getCsvData = async (url: string):Promise<CsvTable> => {
 
   const text = await response.text();
   const parsed = csvParse(text);
-  const data: Array<any> = [];
+  const dataRows: Array<any> = [];
 
   parsed.forEach((rowValue: any) => {
     const dataRow: Array<any> = [];
@@ -18,9 +18,9 @@ export const getCsvData = async (url: string):Promise<CsvTable> => {
       dataRow.push(rowValue[key]);
     })
     if(dataRow.length > 0) {
-      data.push(dataRow);
+      dataRows.push(dataRow);
     }
   });
 
-  return { columns: parsed.columns, dataRows: data };
+  return { columns: parsed.columns, dataRows: dataRows };
 };
